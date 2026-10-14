@@ -2,6 +2,19 @@
   "name": "git-ai-commit-cli",
   "version": "0.1.0",
   "description": "Stage everything, generate a commit message with your own AI key, and commit \u2014 in one command.",
+  "license": "MIT",
+  "author": {
+    "name": "Hitesh Johar",
+    "url": "https://www.linkedin.com/in/hitesh-johar/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hitesh314/checkin.git"
+  },
+  "homepage": "https://github.com/hitesh314/checkin#readme",
+  "bugs": {
+    "url": "https://github.com/hitesh314/checkin/issues"
+  },
   "type": "module",
   "bin": {
     "checkin": "bin/checkin.js",
@@ -11,7 +24,8 @@
     "bin",
     "dist",
     "scripts",
-    "README.md"
+    "README.md",
+    "LICENSE"
   ],
   "engines": {
     "node": ">=20"

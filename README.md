@@ -9,7 +9,7 @@ Type `checkin`. It stages your changes, asks an AI model **you** configure to wr
 - Secrets live in your OS credential store (or environment variables), never in a plaintext file.
 - Git hooks and commit signing keep working. It never pushes, never resets, never discards your changes.
 
-The npm package is `git-ai-commit-cli` (provisional name). It installs two commands that
+The npm package is `git-ai-commit-cli`. It installs two commands that
 do the same thing: **`checkin`** and **`gac`**.
 
 **Author:** Hitesh Johar — [LinkedIn](https://www.linkedin.com/in/hitesh-johar/)
@@ -398,3 +398,7 @@ src/commands/         setup and doctor
 Tests use temporary Git repositories under the system temp directory, an isolated git config, and
 mocked provider and Jira HTTP responses. One suite spawns the real built binary against a local mock
 Ollama server. The tests never touch the repository this project lives in.
+
+## License
+
+[MIT](LICENSE) © 2026 Hitesh Johar
