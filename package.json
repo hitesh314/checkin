@@ -1,7 +1,7 @@
 {
   "name": "git-checkin",
-  "version": "0.1.0",
-  "description": "Stage everything, generate a commit message with your own AI key, and commit \u2014 in one command.",
+  "version": "0.1.1",
+  "description": "Stage everything, generate a commit message with your own AI key, and commit — in one command.",
   "license": "MIT",
   "author": {
     "name": "Hitesh Johar",

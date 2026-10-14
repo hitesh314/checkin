@@ -1,5 +1,9 @@
 # checkin — Git AI Commit
 
+[![npm](https://img.shields.io/npm/v/git-checkin.svg)](https://www.npmjs.com/package/git-checkin)
+[![license](https://img.shields.io/npm/l/git-checkin.svg)](LICENSE)
+[![node](https://img.shields.io/node/v/git-checkin.svg)](https://nodejs.org)
+
 Type `checkin`. It stages your changes, asks an AI model **you** configure to write a
 [Conventional Commit](https://www.conventionalcommits.org) message from the actual diff
 (optionally using Jira ticket context), and commits. **There is no confirmation prompt.**
@@ -9,9 +13,34 @@ Type `checkin`. It stages your changes, asks an AI model **you** configure to wr
 - Secrets live in your OS credential store (or environment variables), never in a plaintext file.
 - Git hooks and commit signing keep working. It never pushes, never resets, never discards your changes.
 
+## Quick start
+
+```sh
+npm install -g git-checkin     # installs the `checkin` command
+checkin setup                  # choose a provider, store your API key securely
+cd your-repo
+checkin                        # stage, generate a Conventional Commit message, commit
+```
+
+Example result:
+
+```
+$ checkin
+Staged all changes under /work/app (environment files excluded)
+Secret scan (gitleaks): no secrets found in the staged changes.
+Generating commit message with openai/gpt-6-luna for 3 files, 2140 byte diff…
+Commit message:
+  feat(parser): retry transient read failures
+[main 3f2a91c] feat(parser): retry transient read failures
+Committed 3f2a91c on main: feat(parser): retry transient read failures
+```
+
+Want to see a message first, without committing? `checkin --preview --staged`.
+
 The npm package is `git-checkin`. It installs one command: **`checkin`**.
 
-**Author:** Hitesh Johar — [LinkedIn](https://www.linkedin.com/in/hitesh-johar/)
+**Author:** Hitesh Johar — [LinkedIn](https://www.linkedin.com/in/hitesh-johar/) ·
+[Source and issues on GitHub](https://github.com/hitesh314/checkin)
 
 > ⚠️ **Read this once.** By default `checkin` stages everything at the repository root (like
 > `git add --all`, but [environment files are skipped](#environment-files-are-never-staged)) and
@@ -21,21 +50,35 @@ The npm package is `git-checkin`. It installs one command: **`checkin`**.
 
 ## Install
 
+```sh
+npm install -g git-checkin
+checkin --version
+```
+
 Requires Node.js 20+ and Git. Installing also downloads [Gitleaks](https://github.com/gitleaks/gitleaks)
 (a pinned release, checked against a SHA-256 hash stored in this package) into the package's `vendor/`
 folder, so [secret scanning](#secret-scanning-with-gitleaks) works straight away. It needs network access
 to github.com during install; if the download fails, install still succeeds and `checkin` tells you how to
 fix it.
 
-From a clone of this repository:
+**Platforms:** developed and tested on macOS (Apple Silicon). Linux and Windows builds of the Gitleaks
+scanner are supported by the installer, but those platforms are not yet tested. Please
+[report problems](https://github.com/hitesh314/checkin/issues).
+
+**If `npm install` fails with `403 Forbidden`:** your npm may be pointed at a company mirror that does not
+carry this package. Install from the public registry instead:
+
+```sh
+npm install -g git-checkin --registry https://registry.npmjs.org/
+```
+
+**To work on checkin itself**, from a clone of this repository:
 
 ```sh
 npm install        # also builds (the `prepare` script runs tsc)
 npm link           # puts `checkin` on your PATH
 checkin --version
 ```
-
-Once published: `npm install -g git-checkin` (the command it installs is `checkin`).
 
 ## Set up
 
@@ -136,6 +179,7 @@ Example result:
 
 ```
 Staged all changes under /work/app (environment files excluded)
+Secret scan (gitleaks): no secrets found in the staged changes.
 Generating commit message with openai/gpt-6-luna for 3 files, 2140 byte diff…
 Commit message:
   feat(parser): retry transient read failures
