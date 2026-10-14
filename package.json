@@ -1,0 +1,46 @@
+{
+  "name": "git-ai-commit-cli",
+  "version": "0.1.0",
+  "description": "Stage everything, generate a commit message with your own AI key, and commit \u2014 in one command.",
+  "type": "module",
+  "bin": {
+    "checkin": "bin/checkin.js",
+    "gac": "bin/checkin.js"
+  },
+  "files": [
+    "bin",
+    "dist",
+    "scripts",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "npm run build && vitest run",
+    "test:unit": "vitest run",
+    "prepare": "npm run build",
+    "postinstall": "node scripts/install-gitleaks.mjs",
+    "install-gitleaks": "node scripts/install-gitleaks.mjs"
+  },
+  "keywords": [
+    "git",
+    "commit",
+    "ai",
+    "cli",
+    "conventional-commits",
+    "jira"
+  ],
+  "dependencies": {
+    "@clack/prompts": "^1.8.1",
+    "@napi-rs/keyring": "^2.1.0",
+    "commander": "^15.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.4",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.3"
+  }
+}

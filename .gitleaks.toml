@@ -1,0 +1,7 @@
+# Keep gitleaks' default rules, but don't flag the obviously fake keys used as test fixtures.
+[extend]
+useDefault = true
+
+[allowlist]
+description = "dummy credentials in tests"
+paths = ['''^test/''']
