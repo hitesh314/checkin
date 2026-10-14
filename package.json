@@ -1,5 +1,5 @@
 {
-  "name": "git-ai-commit-cli",
+  "name": "git-checkin",
   "version": "0.1.0",
   "description": "Stage everything, generate a commit message with your own AI key, and commit \u2014 in one command.",
   "license": "MIT",
@@ -17,8 +17,7 @@
   },
   "type": "module",
   "bin": {
-    "checkin": "bin/checkin.js",
-    "gac": "bin/checkin.js"
+    "checkin": "bin/checkin.js"
   },
   "files": [
     "bin",

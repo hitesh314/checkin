@@ -9,8 +9,7 @@ Type `checkin`. It stages your changes, asks an AI model **you** configure to wr
 - Secrets live in your OS credential store (or environment variables), never in a plaintext file.
 - Git hooks and commit signing keep working. It never pushes, never resets, never discards your changes.
 
-The npm package is `git-ai-commit-cli`. It installs two commands that
-do the same thing: **`checkin`** and **`gac`**.
+The npm package is `git-checkin`. It installs one command: **`checkin`**.
 
 **Author:** Hitesh Johar — [LinkedIn](https://www.linkedin.com/in/hitesh-johar/)
 
@@ -32,11 +31,11 @@ From a clone of this repository:
 
 ```sh
 npm install        # also builds (the `prepare` script runs tsc)
-npm link           # puts `checkin` (and `gac`) on your PATH
+npm link           # puts `checkin` on your PATH
 checkin --version
 ```
 
-Once published: `npm install -g git-ai-commit-cli`.
+Once published: `npm install -g git-checkin` (the command it installs is `checkin`).
 
 ## Set up
 
